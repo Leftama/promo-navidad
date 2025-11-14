@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salmón - Oferta Fin de Año</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a2e;
+            padding: 20px;
+        }
+        
+        .poster {
+            width: 100%;
+            max-width: 1080px;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border-radius: 20px;
+        }
+        
+        /* Elementos decorativos navideños */
+        .snowflake {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 20px;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        .snowflake:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+        .snowflake:nth-child(2) { left: 25%; animation-duration: 10s; animation-delay: 2s; }
+        .snowflake:nth-child(3) { left: 40%; animation-duration: 12s; animation-delay: 1s; }
+        .snowflake:nth-child(4) { left: 60%; animation-duration: 9s; animation-delay: 3s; }
+        .snowflake:nth-child(5) { left: 75%; animation-duration: 11s; animation-delay: 0.5s; }
+        .snowflake:nth-child(6) { left: 90%; animation-duration: 10s; animation-delay: 2.5s; }
+        
+        .content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 35px 30px;
+        }
+        
+        .header {
+            text-align: center;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #f4e4a6 50%, #d4af37 100%);
+            color: #1a1a2e;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+        
+        .main-title {
+            font-size: 56px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            line-height: 1.1;
+        }
+        
+        .subtitle {
+            font-size: 22px;
+            color: #ffd700;
+            font-style: italic;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+        
+        .middle-section {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 25px 30px;
+            margin: 15px 0;
+        }
+        
+        .price-container {
+            margin-bottom: 15px;
+        }
+        
+        .price-label {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        
+        .price {
+            font-size: 70px;
+            font-weight: bold;
+            color: #ffd700;
+            line-height: 1;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+        }
+        
+        .price-sub {
+            font-size: 22px;
+            color: #ffffff;
+            margin-top: 3px;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .feature {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        
+        .feature-text {
+            font-size: 15px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .slogan {
+            text-align: center;
+            background: linear-gradient(135deg, #d4af37 0%, #f4e4a6 50%, #d4af37 100%);
+            padding: 20px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        .slogan-text {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1a1a2e;
+            font-style: italic;
+            line-height: 1.2;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #ff6b6b 100%);
+            color: #ffffff;
+            padding: 18px 35px;
+            border-radius: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+            animation: pulse 2s infinite;
+            border: 3px solid #ffffff;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(255, 107, 107, 0.7);
+            }
+        }
+        
+        .contact-section {
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin-top: 12px;
+        }
+        
+        .contact-title {
+            color: #ffd700;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .contact-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .contact-icon {
+            font-size: 18px;
+        }
+        
+        .contact-text {
+            color: #ffffff;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .poster {
+                border-radius: 10px;
+            }
+            
+            .content {
+                padding: 30px 25px;
+            }
+            
+            .badge {
+                font-size: 14px;
+                padding: 8px 20px;
+                letter-spacing: 1px;
+            }
+            
+            .main-title {
+                font-size: 48px;
+            }
+            
+            .subtitle {
+                font-size: 20px;
+            }
+            
+            .middle-section {
+                padding: 25px 20px;
+                margin: 15px 0;
+            }
+            
+            .price-label {
+                font-size: 18px;
+            }
+            
+            .price {
+                font-size: 60px;
+            }
+            
+            .price-sub {
+                font-size: 20px;
+            }
+            
+            .features {
+                gap: 15px;
+            }
+            
+            .feature-icon {
+                font-size: 30px;
+            }
+            
+            .feature-text {
+                font-size: 14px;
+            }
+            
+            .slogan {
+                padding: 20px 25px;
+            }
+            
+            .slogan-text {
+                font-size: 24px;
+            }
+            
+            .cta-button {
+                padding: 18px 30px;
+                font-size: 18px;
+            }
+            
+            .contact-section {
+                padding: 15px 20px;
+                margin-top: 15px;
+            }
+            
+            .contact-title {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+            
+            .contact-items {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .contact-item {
+                font-size: 14px;
+            }
+            
+            .contact-icon {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .badge {
+                font-size: 12px;
+                padding: 6px 15px;
+            }
+            
+            .main-title {
+                font-size: 36px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .middle-section {
+                padding: 20px 15px;
+            }
+            
+            .price {
+                font-size: 48px;
+            }
+            
+            .price-sub {
+                font-size: 16px;
+            }
+            
+            .features {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .slogan-text {
+                font-size: 20px;
+            }
+            
+            .cta-button {
+                padding: 15px 20px;
+                font-size: 16px;
+            }
+            
+            .contact-items {
+                gap: 8px;
+            }
+            
+            .contact-item {
+                font-size: 12px;
+            }
+        }
+        
+        /* Decoración de estrellas */
+        .star {
+            position: absolute;
+            color: #ffd700;
+            opacity: 0.6;
+            animation: twinkle 2s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .star:nth-child(7) { top: 15%; left: 15%; font-size: 30px; }
+        .star:nth-child(8) { top: 20%; right: 20%; font-size: 25px; animation-delay: 0.5s; }
+        .star:nth-child(9) { bottom: 25%; left: 10%; font-size: 35px; animation-delay: 1s; }
+        .star:nth-child(10) { bottom: 30%; right: 15%; font-size: 28px; animation-delay: 1.5s; }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <!-- Copos de nieve -->
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❄</div>
+        
+        <!-- Estrellas -->
+        <div class="star">✨</div>
+        <div class="star">✨</div>
+        <div class="star">✨</div>
+        <div class="star">✨</div>
+        
+        <div class="content">
+            <!-- Header -->
+            <div class="header">
+                <div class="badge">🎄 Especial Fin de Año 🎄</div>
+                <h1 class="main-title">SALMÓN<br>PREMIUM</h1>
+                <p class="subtitle">La estrella de tu mesa navideña</p>
+            </div>
+            
+            <!-- Middle Section -->
+            <div class="middle-section">
+                <div class="price-container">
+                    <p class="price-label">PRECIO EXCLUSIVO</p>
+                    <div class="price">$10.490</div>
+                    <p class="price-sub">el kilo + IVA</p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🐟</div>
+                        <p class="feature-text">Desde 15 kilos</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⭐</div>
+                        <p class="feature-text">Calidad Premium</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">👨‍🍳</div>
+                        <p class="feature-text">10% por tu primera compra</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slogan -->
+            <div class="slogan">
+                <p class="slogan-text">"Celebra con sabor, brinda con tradición"</p>
+            </div>
+            
+            <!-- Footer / CTA -->
+            <div class="footer">
+                <div class="cta-button">
+                    🎁 Haz tu pedido ahora y asegura tu Navidad perfecta 🎁
+                </div>
+                
+                <!-- Contact Section -->
+                <div class="contact-section">
+                    <div class="contact-title">📞 Contáctanos</div>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span class="contact-text">contacto@salmoprime.cl</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span class="contact-text">+56 9 1234 5678</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📸</span>
+                            <span class="contact-text">@salmoprime</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
